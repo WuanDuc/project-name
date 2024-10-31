@@ -1,40 +1,41 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+/* eslint-disable prettier/prettier */
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
-@Entity()
+@Entity('students')
 export class StudentEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: number;
 
   @Column()
-  sbd: string;
+  sbd: number;
 
-  @Column()
+  @Column({ nullable: true, type: 'float' }) // specify type for float values
   toan: number;
-
-  @Column()
+  
+  @Column({ nullable: true, type: 'float' }) // specify type for float values
   ngu_van: number;
-
-  @Column()
+  
+  @Column({ nullable: true, type: 'float' }) // specify type for float values
   ngoai_ngu: number;
-
-  @Column()
+  
+  @Column({ nullable: true, type: 'float' }) // specify type for float values
   vat_li: number;
-
-  @Column()
+  
+  @Column({ nullable: true, type: 'float' }) // specify type for float values
   hoa_hoc: number;
-
-  @Column()
+  
+  @Column({ nullable: true, type: 'float' }) // specify type for float values
   sinh_hoc: number;
-
-  @Column()
+  
+  @Column({ nullable: true, type: 'float' }) // specify type for float values
   lich_su: number;
-
-  @Column()
+  
+  @Column({ nullable: true, type: 'float' }) // specify type for float values
   dia_li: number;
-
-  @Column()
+  
+  @Column({ nullable: true, type: 'float' }) // specify type for float values
   gdcd: number;
-
-  @Column()
+  
+  @Column({ nullable: true, type: 'character varying' })
   ma_ngoai_ngu: string;
 }

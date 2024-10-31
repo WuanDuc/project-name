@@ -10,8 +10,10 @@ export class StudentsService {
         @InjectRepository(StudentEntity)
         private studentRepository: Repository<StudentEntity>,
       ) {}
-      findStudentById(id: string): Promise<StudentEntity> {
-        return this.studentRepository.findOneBy({ sbd: id });
+      findStudentBySbd(sbd: number): Promise<StudentEntity> {
+        const student = this.studentRepository.findOneBy({ sbd });
+        return student;  
+        //return this.studentRepository.findOneBy({ sbd: id });
       }
 
 }
