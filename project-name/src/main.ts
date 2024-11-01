@@ -7,8 +7,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   //comment this line if you don't want to seed database
-  const seedService = app.get(SeedService);
-  await seedService.seedDatabaseFromCSV('C:\\Users\\Ideapad gaming 3\\Downloads\\diem_thi_thpt_2024.csv');
+  // const seedService = app.get(SeedService);
+  // await seedService.seedDatabaseFromCSV('C:\\Users\\Ideapad gaming 3\\Downloads\\diem_thi_thpt_2024.csv');
   //comment the above line if you don't want to seed database
   
   await app.listen(process.env.PORT ?? 3000);
