@@ -13,7 +13,7 @@ import { StudentEntity } from './students/interface/student.entity';
         database: 'Scores',
         entities: [StudentEntity],
         synchronize: false, // for development use only, auto-syncs tables
-        logging: true,
+        //logging: true,
       }),
       TypeOrmModule.forFeature([StudentEntity]),
     ],

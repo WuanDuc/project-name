@@ -3,6 +3,8 @@ import { Injectable } from '@nestjs/common';
 import { StudentEntity } from './interface/student.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import * as fs from 'fs';
+import * as csvParser from 'csv-parser';
 @Injectable()
 export class StudentsService {
     //private readonly stds: Student[] = [];
@@ -50,4 +52,51 @@ export class StudentsService {
         .limit(10)
         .getRawMany();
     }
+    async importStudentsFromCSV(filePath: string): Promise<void> {
+        const batchSize = 100; // Adjust based on available memory and performance needs
+        const students: StudentEntity[] = [];
+    
+        return new Promise((resolve, reject) => {
+            fs.createReadStream(filePath)
+                .pipe(csvParser())
+                .on('data', (data) => {
+                    // Map CSV data to StudentEntity
+                    const student = new StudentEntity();
+                    student.sbd = parseInt(data.sbd, 10);
+                    student.toan = data.toan ? parseFloat(data.toan) : null;
+                    student.vat_li = data.vat_li ? parseFloat(data.vat_li) : null;
+                    student.hoa_hoc = data.hoa_hoc ? parseFloat(data.hoa_hoc) : null;
+                    student.ngu_van = data.ngu_van ? parseFloat(data.ngu_van) : null;
+                    student.ngoai_ngu = data.ngoai_ngu ? parseFloat(data.ngoai_ngu) : null;
+                    student.lich_su = data.lich_su ? parseFloat(data.lich_su) : null;
+                    student.dia_li = data.dia_li ? parseFloat(data.dia_li) : null;
+                    student.gdcd = data.gdcd ? parseFloat(data.gdcd) : null;
+                    student.ma_ngoai_ngu = data.ma_ngoai_ngu || null;
+    
+                    students.push(student);
+    
+                    // When batch size is reached, save the batch and reset the array
+                    if (students.length >= batchSize) {
+                        this.studentRepository.save(students.slice()) // Make a copy for async operations
+                            .then(() => students.length = 0) // Clear array after batch insert
+                            .catch(reject);
+                    }
+                })
+                .on('end', async () => {
+                    try {
+                        // Save any remaining students
+                        if (students.length > 0) {
+                            await this.studentRepository.save(students);
+                        }
+                        resolve();
+                    } catch (error) {
+                        reject(error);
+                    }
+                })
+                .on('error', (error) => {
+                    reject(error);
+                });
+        });
+    }
+    
 }

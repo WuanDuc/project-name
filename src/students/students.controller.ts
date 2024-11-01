@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { StudentsService } from './students.service';
 import { StudentEntity } from './interface/student.entity';
+
 @Controller('students')
 export class StudentController {
   constructor(private readonly studentService: StudentsService) {}
@@ -29,5 +30,9 @@ export class StudentController {
     const result = await this.studentService.getReportBySubject(subject);
     return result;
   }
-
+//   @Post('import-csv')
+//   async importCSV(@Body('filePath') filePath: string): Promise<string> {
+//       await this.studentService.importStudentsFromCSV(filePath);
+//       return 'Students imported successfully!';
+//   }
 }
