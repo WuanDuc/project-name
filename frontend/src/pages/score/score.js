@@ -102,17 +102,17 @@ const ScorePage = () => {
           <table className="w-full text-left">
             <thead>
               <tr>
-                <th className="px-4 py-3">Student ID (SBD)</th>
-                <th className="px-4 py-3">Toán</th>
-                <th className="px-4 py-3">Ngữ Văn</th>
-                <th className="px-4 py-3">Ngoại Ngữ</th>
-                <th className="px-4 py-3">Vật Lý</th>
-                <th className="px-4 py-3">Hóa Học</th>
-                <th className="px-4 py-3">Sinh Học</th>
-                <th className="px-4 py-3">Lịch Sử</th>
-                <th className="px-4 py-3">Địa Lí</th>
-                <th className="px-4 py-3">GDCD</th>
-                <th className="px-4 py-3">Mã Ngoại Ngữ</th>
+                <th className="px-4 py-3 text-white dark:text-slate-700">Student ID</th>
+                <th className="px-4 py-3 text-white dark:text-slate-700">Toán</th>
+                <th className="px-4 py-3 text-white dark:text-slate-700">Ngữ Văn</th>
+                <th className="px-4 py-3 text-white dark:text-slate-700">Ngoại Ngữ</th>
+                <th className="px-4 py-3 text-white dark:text-slate-700">Vật Lý</th>
+                <th className="px-4 py-3 text-white dark:text-slate-700">Hóa Học</th>
+                <th className="px-4 py-3 text-white dark:text-slate-700">Sinh Học</th>
+                <th className="px-4 py-3 text-white dark:text-slate-700">Lịch Sử</th>
+                <th className="px-4 py-3 text-white dark:text-slate-700">Địa Lí</th>
+                <th className="px-4 py-3 text-white dark:text-slate-700">GDCD</th>
+                <th className="px-4 py-3 text-white dark:text-slate-700">Mã Ngoại Ngữ</th>
               </tr>
             </thead>
             <tbody>
