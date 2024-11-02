@@ -218,11 +218,11 @@ const ReportPage = () => {
               <ChartOne />
             </div>
             <div className="col-span-12 md:col-span-6 2xl:col-span-6">
-              <table className="table-auto w-full">
+              <table className=" w-full">
                 <thead>
                   <tr>
-                    <th className="px-4 py-2">Score</th>
-                    <th className="px-4 py-2">Number of Students</th>
+                    <th className="px-4 py-2 text-black dark:text-white">Score</th>
+                    <th className="px-4 py-2 text-black dark:text-white">Number of Students</th>
                   </tr>
                 </thead>
                 <tbody>

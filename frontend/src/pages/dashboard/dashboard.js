@@ -247,14 +247,14 @@ const DashboardPage = () => {
 
       </div>
       <h1 className="text-2xl font-bold mt-24">Top 10 student of group A</h1>
-      <table className="w-full mt-4">
+      <table className="w-full mt-4 text-black">
       <thead>
         <tr>
-          <th>SBĐ</th>
-          <th>Toán</th>
-          <th>Vật lý</th>
-          <th>Hóa học</th>
-          <th>Điểm trung bình</th>
+          <th className=' text-black dark:text-white'>SBĐ</th>
+          <th className=' text-black dark:text-white'>Toán</th>
+          <th className=' text-black dark:text-white'>Vật lý</th>
+          <th className=' text-black dark:text-white'>Hóa học</th>
+          <th className=' text-black dark:text-white'>Điểm trung bình</th>
         </tr>
       </thead>
       <tbody>
@@ -264,7 +264,7 @@ const DashboardPage = () => {
             <td>{student.student_toan}</td>
             <td>{student.student_vat_li}</td>
             <td>{student.student_hoa_hoc}</td>
-            <td>{student.avg_scores}</td>
+            <td>{student.avg_scores.toFixed(2)}</td>
           </tr>
         ))}
       </tbody>
