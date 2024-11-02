@@ -27,12 +27,27 @@ export class StudentsService {
             COUNT(CASE WHEN ${subject} < 4 THEN 1 END) AS level4
           `)
           .getRawOne();
-    
+          const subjectNameMap = {
+            toan: 'Toán',
+            ngu_van: 'Ngữ văn',
+            ngoai_ngu: 'Ngoại ngữ',
+            vat_li: 'Vật lí',
+            hoa_hoc: 'Hóa học',
+            sinh_hoc: 'Sinh học',
+            lich_su: 'Lịch sử',
+            dia_li: 'Địa lí',
+            gdcd: 'GDCD',
+          };
+          
+          const subjectName = subjectNameMap[subject] || 'Unknown';
         return {
-          good: result.level1, // >= 8 points
-          mid: result.level2, // 6 <= points < 8
-          bad: result.level3, // 4 <= points < 6
-          fail: result.level4, // < 4 points
+          name: subjectName,
+          data: [
+            Number(result.level1),
+            Number(result.level2),
+            Number(result.level3),
+            Number(result.level4),
+          ]
         };
       }
       async getTop10StudentsInGroupA(): Promise<any[]> {

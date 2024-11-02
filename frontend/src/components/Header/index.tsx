@@ -59,7 +59,9 @@ const Header = (props: {
         </div>
 
         <div className="hidden sm:block">
-
+          <Link className="text-lg font-bold text-gray-700 dark:text-white" to="/">
+            <span>GOL-SCORE</span>
+          </Link>
         </div>
 
         <div className="flex items-center gap-3 2xsm:gap-7">

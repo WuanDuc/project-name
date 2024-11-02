@@ -2,7 +2,7 @@ import { ApexOptions } from 'apexcharts';
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { useChart } from '../../context/chartContext';
-
+import useColorMode from '../../hooks/useColorMode';
 
 
 
@@ -32,7 +32,7 @@ const ChartOne: React.FC = () => {
       </div>
 
       <div>
-        <div id="chartOne" className="-ml-5">
+        <div id="chartOne" className="-ml-5 text-boxdark-2 dark:text-bodydark">
           <ReactApexChart
             options={options}
             series={data.series}

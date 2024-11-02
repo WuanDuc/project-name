@@ -21,4 +21,50 @@
     border: 1px solid #ccc;
     text-align: left;
   }
+  /* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th {
+    background-color: ; /* Header background color */
+    color: white; /* Header text color */
+    padding: 12px 15px; /* Padding for headers */
+    text-align: left; /* Align text to the left */
+  }
+  
+  td {
+    background-color: #f9f9f9; /* Cell background color */
+    padding: 12px 15px; /* Padding for cells */
+    border-bottom: 1px solid #ddd; /* Border for bottom of cells */
+  }
+  
+  /* Hover effect for table rows */
+  tbody tr:hover {
+    background-color: #e0f7fa; /* Light blue hover color */
+  }
+  
+  /* Styling for the border of the table */
+  .table-container {
+    border: 1px solid #ddd; /* Border around the table */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Prevent overflow */
+  }
+  
+  /* Alternative row colors for better readability */
+  tbody tr:nth-child(even) td {
+    background-color: #f2f2f2; /* Light gray for even rows */
+  }
+  
+  tbody tr:nth-child(odd) td {
+    background-color: #ffffff; /* White for odd rows */
+  }
+  
+  /* Optional: Make table responsive */
+  @media (max-width: 600px) {
+    th, td {
+      padding: 10px; /* Reduced padding for smaller screens */
+    }
+  }
   

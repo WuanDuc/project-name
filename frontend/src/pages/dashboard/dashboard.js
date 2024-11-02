@@ -4,11 +4,13 @@ import ChartOne from '../../components/Charts/ChartOne.tsx';
 import CardDataStats from '../../components/CardDataStats.tsx';
 import { host } from '../../config/constraints';
 import { useChart } from '../../context/chartContext.js';
+import useColorMode from '../../hooks/useColorMode.tsx';
 const DashboardPage = () => {
   const [total, setTotal] = useState(0);
   const { setData, setOptions } = useChart();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [topStudents, setTopStudents] = useState([]);
   // Function to fetch data
   const fetchData = async () => {
     try {
@@ -40,7 +42,27 @@ const DashboardPage = () => {
       setIsLoading(false);
     }
   };
-
+  const fetchTopStudents = async () => {
+    try {
+      const response = await fetch(`${host}students/top10`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error('Cant connect to database');
+      }
+  
+      const topStudents = await response.json();
+      console.log(topStudents);
+      setTopStudents(topStudents);
+    } catch (error) {
+      console.error(error);
+      setError('Get data failed. Please check your internet and try again.');
+    }
+  };
   const fetchTotal = async () => {
     try {
       const response = await fetch(`${host}students/total`, {
@@ -64,6 +86,8 @@ const DashboardPage = () => {
       setIsLoading(false);
     }
   };
+  const {colorMode} = useColorMode(); // Get the color mode
+
   const option: ApexOptions = {
     legend: {
       show: false,
@@ -72,7 +96,7 @@ const DashboardPage = () => {
     },
     colors: ['#3C50E0', '#80CAEE'],
     chart: {
-      fontFamily: 'Satoshi, sans-serif',
+      fontFamily: 'Rubik, sans-serif',
       height: 335,
       type: 'area',
       dropShadow: {
@@ -83,10 +107,11 @@ const DashboardPage = () => {
         left: 0,
         opacity: 0.1,
       },
-  
       toolbar: {
         show: false,
       },
+      // Add background color depending on color mode
+      background: colorMode === 'dark' ? 'bg-boxdark' : 'bg-white',
     },
     responsive: [
       {
@@ -110,10 +135,6 @@ const DashboardPage = () => {
       width: [2, 2],
       curve: 'straight',
     },
-    // labels: {
-    //   show: false,
-    //   position: "top",
-    // },
     grid: {
       xaxis: {
         lines: {
@@ -124,6 +145,7 @@ const DashboardPage = () => {
         lines: {
           show: true,
         },
+
       },
     },
     dataLabels: {
@@ -163,21 +185,30 @@ const DashboardPage = () => {
       axisTicks: {
         show: false,
       },
-    },
-    yaxis: {
-      title: {
+      tickPlacement: 'between',
+      labels: {
         style: {
-          fontSize: '0px',
+          colors: colorMode === 'dark' ? '#FFFFFF' : '#000000',
         },
       },
-      min: 0,
-      max: 3000000,
+
+  },    
+  yaxis: {
+    labels: {
+      style: {
+        colors: colorMode === 'dark' ? '#FFFFFF' : '#000000',
+      },
     },
+    min: 0,
+    max: 3000000,
+  },
   };
+
   // Use useEffect to fetch data when the component mounts
   useEffect(() => {
     setOptions(option);
     fetchData();
+    fetchTopStudents();
     fetchTotal();
   }, []);
 
@@ -186,11 +217,13 @@ const DashboardPage = () => {
     {isLoading ? (
       <div>Loading...</div>
     ) : (
+      <div>
+        <h1 className="text-2xl font-bold">Sumary</h1>
       <div className="mt-30 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
         <ChartOne />
         <CardDataStats title="Total Students" total={total}>
           <svg
-            className="fill-primary dark:fill-white"
+            className="fill-primary dark:fill-white pl-10"
             width="22"
             height="18"
             viewBox="0 0 22 18"
@@ -211,6 +244,31 @@ const DashboardPage = () => {
             />
           </svg>
         </CardDataStats>
+
+      </div>
+      <h1 className="text-2xl font-bold mt-24">Top 10 student of group A</h1>
+      <table className="w-full mt-4">
+      <thead>
+        <tr>
+          <th>SBĐ</th>
+          <th>Toán</th>
+          <th>Vật lý</th>
+          <th>Hóa học</th>
+          <th>Điểm trung bình</th>
+        </tr>
+      </thead>
+      <tbody>
+        {topStudents.map((student, index) => (
+          <tr key={index}>
+            <td>{student.student_sbd}</td>
+            <td>{student.student_toan}</td>
+            <td>{student.student_vat_li}</td>
+            <td>{student.student_hoa_hoc}</td>
+            <td>{student.avg_scores}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
       </div>
         )}
   </>
