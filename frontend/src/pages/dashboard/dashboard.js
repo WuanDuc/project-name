@@ -264,7 +264,7 @@ const DashboardPage = () => {
             <td>{student.student_toan}</td>
             <td>{student.student_vat_li}</td>
             <td>{student.student_hoa_hoc}</td>
-            <td>{student.avg_scores}</td>
+            <td>{student.avg_scores.toFixed(2)}</td>
           </tr>
         ))}
       </tbody>
