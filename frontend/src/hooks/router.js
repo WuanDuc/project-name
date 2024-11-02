@@ -3,6 +3,7 @@ import Sidebar from '../components/sidebar';
 import DashboardPage from '../pages/dashboard/dashboard';
 import ScorePage from '../pages/score/score';
 import './router.css';
+import React from 'react';
 const router = createBrowserRouter([
     {
         path: '/',

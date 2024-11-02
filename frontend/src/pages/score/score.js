@@ -45,7 +45,7 @@ const ScorePage = () => {
 
     return (
         <div className="score-page">
-        <h1>Score Search</h1>
+        <h1 className=' font-rubik'>Score Search</h1>
         <div className="input-container">
             <input
             type="text"
