@@ -20,6 +20,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         entities: [StudentEntity],
         synchronize: false, // for development use only, auto-syncs tables
         //logging: true,
+        ssl:{
+          rejectUnauthorized: false
+        }
       }),
       inject: [ConfigService],
       }),
