@@ -35,4 +35,16 @@ export class StudentController {
 //       await this.studentService.importStudentsFromCSV(filePath);
 //       return 'Students imported successfully!';
 //   }
+  // get total number of student
+  @Get('total')
+  async getTotalNumberOfStudents(): Promise<any> {
+    const result = await this.studentService.getTotalNumberOfStudents();
+    return result;
+  }
+  // get score distribution
+  @Get('score-distribution')
+  async getScoreDistribution(): Promise<any> {
+    const result = await this.studentService.getScoreDistribution();
+    return result;
+  }
 }

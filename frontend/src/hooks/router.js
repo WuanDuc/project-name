@@ -28,7 +28,7 @@ const router = createBrowserRouter([
   
             {/* <!-- ===== Main Content Start ===== --> */}
             <main>
-              <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+              <div className="mx-auto ml-30 max-w-screen-2xl p-4 md:p-6 2xl:p-10">
               <DashboardPage/>
               </div>
             </main>
@@ -42,12 +42,31 @@ const router = createBrowserRouter([
     {
         path: '/score',
         element: (
-          <div className="app">
-            <Sidebar />
-            <div className="main-content">
-              <ScorePage />
+          <div className="dark:bg-boxdark-2 dark:text-bodydark">
+          {/* <!-- ===== Page Wrapper Start ===== --> */}
+          <div className="flex h-screen overflow-hidden">
+            {/* <!-- ===== Sidebar Start ===== --> */}
+            <Sidebar/>
+            {/* <!-- ===== Sidebar End ===== --> */}
+    
+            {/* <!-- ===== Content Area Start ===== --> */}
+            <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+              {/* <!-- ===== Header Start ===== --> */}
+              <Header />
+              {/* <!-- ===== Header End ===== --> */}
+    
+              {/* <!-- ===== Main Content Start ===== --> */}
+              <main>
+                <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+                <ScorePage/>
+                </div>
+              </main>
+              {/* <!-- ===== Main Content End ===== --> */}
             </div>
+            {/* <!-- ===== Content Area End ===== --> */}
           </div>
+          {/* <!-- ===== Page Wrapper End ===== --> */}
+        </div>
         ),
     },
 ]);

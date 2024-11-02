@@ -789,6 +789,26 @@ body {
   margin-top: 1.25rem;
 }
 
+.mt-14 {
+  margin-top: 3.5rem;
+}
+
+.mt-30 {
+  margin-top: 7.5rem;
+}
+
+.ml-24 {
+  margin-left: 6rem;
+}
+
+.ml-30 {
+  margin-left: 7.5rem;
+}
+
+.ml-10 {
+  margin-left: 2.5rem;
+}
+
 .box-content {
   box-sizing: content-box;
 }
@@ -1075,6 +1095,14 @@ body {
 
 .grid-cols-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1386,6 +1414,10 @@ body {
   fill: #FFFFFF;
 }
 
+.fill-primary {
+  fill: #3C50E0;
+}
+
 .stroke-current {
   stroke: currentColor;
 }
@@ -1652,6 +1684,16 @@ body {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity));
 }
 
 .\!opacity-100 {
@@ -2417,6 +2459,10 @@ span.flatpickr-weekday:is(.dark *),
   fill: #AEB7C0;
 }
 
+.dark\:fill-white:is(.dark *) {
+  fill: #FFFFFF;
+}
+
 .dark\:text-bodydark:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(174 183 192 / var(--tw-text-opacity));
@@ -2425,6 +2471,11 @@ span.flatpickr-weekday:is(.dark *),
 .dark\:text-white:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.dark\:text-gray-400:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .dark\:drop-shadow-none:is(.dark *) {
@@ -2520,6 +2571,18 @@ span.flatpickr-weekday:is(.dark *),
 }
 
 @media (min-width: 768px) {
+  .md\:mt-6 {
+    margin-top: 1.5rem;
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:gap-6 {
+    gap: 1.5rem;
+  }
+
   .md\:p-6 {
     padding: 1.5rem;
   }
@@ -2576,6 +2639,10 @@ span.flatpickr-weekday:is(.dark *),
     width: 31.25rem;
   }
 
+  .xl\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .xl\:p-5 {
     padding: 1.25rem;
   }
@@ -2595,6 +2662,14 @@ span.flatpickr-weekday:is(.dark *),
 }
 
 @media (min-width: 1536px) {
+  .\32xl\:mt-7\.5 {
+    margin-top: 1.875rem;
+  }
+
+  .\32xl\:gap-7\.5 {
+    gap: 1.875rem;
+  }
+
   .\32xl\:p-10 {
     padding: 2.5rem;
   }
