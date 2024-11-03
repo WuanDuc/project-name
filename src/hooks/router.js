@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar/index.tsx';
-import DashboardPage from '../pages/dashboard/dashboard';
-import ScorePage from '../pages/score/score';
+import DashboardPage from '../pages/dashboard/dashboard.js';
+import ScorePage from '../pages/score/score.js';
 import './router.css';
 import React from 'react';
 import Header from '../components/Header/index.tsx';

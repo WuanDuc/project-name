@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import ChartOne from '../../components/Charts/ChartOne.tsx';
 import CardDataStats from '../../components/CardDataStats.tsx';
-import { host } from '../../config/constraints';
+import { host } from '../../config/constraints.js';
 import { useChart } from '../../context/chartContext.js';
 import useColorMode from '../../hooks/useColorMode.tsx';
 const ReportPage = () => {
