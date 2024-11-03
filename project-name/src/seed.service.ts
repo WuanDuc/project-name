@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, EntityManager } from 'typeorm';
 import { StudentEntity } from './students/interface/student.entity';
 import * as fs from 'fs';
 import * as csvParser from 'csv-parser';
@@ -15,11 +15,43 @@ export class SeedService {
     ) {}
 
     async seedDatabaseFromCSV(filePath: string): Promise<void> {
+        const entityManager = this.studentRepository.manager;
+        const metadata = entityManager.connection.entityMetadatas.find((metadata) => metadata.tableName === 'students');
+      console.log('metadata', metadata.tableName);
+      if (!metadata) {
+        console.log('Table does not exist, creating it...');
+        // Table does not exist, create it
+        await this.studentRepository.manager.connection.synchronize();
+        // Wait for the connection to be initialized before proceeding
+        while (!this.studentRepository.manager.connection.isInitialized) {
+          await new Promise(resolve => setTimeout(resolve, 100)); // wait for 100ms
+        }
+      }
+      else {
+      console.log('Table exists, seeding it...');
+
+
+      // Comment this for deploy to local 
+    let studentCount = 0;
+    const limit = 10000; // For deploy to Render duo to connection limit
+    // Comment this for deploy to local
+
+
         const students: StudentEntity[] = [];
         return new Promise((resolve, reject) => {
             fs.createReadStream(filePath)
                 .pipe(csvParser())
                 .on('data', (data) => {
+
+
+                    // comment this line if seeding to local
+                    if (studentCount >= limit) {
+                        return;
+                    }
+                    studentCount++;
+                    // comment this line if seeding to local
+
+
                     const student = new StudentEntity();
                     student.sbd = parseInt(data.sbd, 10);
                     student.toan = data.toan ? parseFloat(data.toan) : null;
@@ -53,5 +85,6 @@ export class SeedService {
                     reject(error);
                 });
         });
+    }
     }
 }
