@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('students')
 export class StudentEntity {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column()
