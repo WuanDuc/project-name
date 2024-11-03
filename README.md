@@ -32,5 +32,9 @@ Create a new database, create table "students" with other properties, change the
 Check out the live website at: [https://testgolenowl.vercel.app/dashboard](here)
 
 ## Video Demo
-Watch a video demo of the application in action: [insert link to video demo]
+Watch a video demo of the application in action: 
+
+
+
+https://github.com/user-attachments/assets/3c2b4e29-969a-47d1-9289-c9c595a864ee
 
