@@ -1,2 +1,2 @@
-const host = "http://localhost:3000/";
+const host = "https://scorebe.onrender.com/";
 export { host };
