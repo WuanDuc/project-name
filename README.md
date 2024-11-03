@@ -20,7 +20,7 @@ Install frontend dependencies
 Navigate to the project-name folder
 ### `cd ../project-name`
 
-# Install backend dependencies
+Install backend dependencies
 ### `npm install`
 
 ## Step 3: Using PostgreSQL to make a local database 
