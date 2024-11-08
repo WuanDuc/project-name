@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentEntity } from './students/interface/student.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
-import {dataSourceOptions} from './config/ormconfig';
+
 @Module({
   imports: [
     ConfigModule.forRoot({

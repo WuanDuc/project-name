@@ -3,10 +3,13 @@ import Sidebar from '../components/Sidebar/index.tsx';
 import DashboardPage from '../pages/dashboard/dashboard';
 import ScorePage from '../pages/score/score';
 import './router.css';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from '../components/Header/index.tsx';
 import ReportPage from '../pages/report/report.js';
 import Settings from '../pages/settings/settings.js';
+
+
+const [sidebarOpen, setSidebarOpen] = useState(false);
 const router = createBrowserRouter([
     {
         path: '/',
@@ -19,7 +22,7 @@ const router = createBrowserRouter([
         {/* <!-- ===== Page Wrapper Start ===== --> */}
         <div className="flex h-screen overflow-hidden">
           {/* <!-- ===== Sidebar Start ===== --> */}
-          <Sidebar/>
+          <Sidebar sidebarOpen={false} setSidebarOpen={(isOpen) => console.log(isOpen)} />
           {/* <!-- ===== Sidebar End ===== --> */}
   
           {/* <!-- ===== Content Area Start ===== --> */}
@@ -48,7 +51,7 @@ const router = createBrowserRouter([
           {/* <!-- ===== Page Wrapper Start ===== --> */}
           <div className="flex h-screen overflow-hidden">
             {/* <!-- ===== Sidebar Start ===== --> */}
-            <Sidebar/>
+            <Sidebar sidebarOpen={true} setSidebarOpen={(isOpen) => console.log(isOpen)}/>
             {/* <!-- ===== Sidebar End ===== --> */}
     
             {/* <!-- ===== Content Area Start ===== --> */}
@@ -78,7 +81,7 @@ const router = createBrowserRouter([
         {/* <!-- ===== Page Wrapper Start ===== --> */}
         <div className="flex h-screen overflow-hidden">
           {/* <!-- ===== Sidebar Start ===== --> */}
-          <Sidebar/>
+          <Sidebar sidebarOpen={true} setSidebarOpen={(isOpen) => console.log(isOpen)}/>
           {/* <!-- ===== Sidebar End ===== --> */}
   
           {/* <!-- ===== Content Area Start ===== --> */}
@@ -108,7 +111,7 @@ const router = createBrowserRouter([
     {/* <!-- ===== Page Wrapper Start ===== --> */}
     <div className="flex h-screen overflow-hidden">
       {/* <!-- ===== Sidebar Start ===== --> */}
-      <Sidebar/>
+      <Sidebar sidebarOpen={true} setSidebarOpen={(isOpen) => console.log(isOpen)}/>
       {/* <!-- ===== Sidebar End ===== --> */}
 
       {/* <!-- ===== Content Area Start ===== --> */}
